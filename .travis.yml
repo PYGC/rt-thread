@@ -1,16 +1,17 @@
 language: c
 os: linux
 dist: xenial
-apt:
-  update: true
-  package:
-    - gcc-multilib
-    - libc6:i386
-    - libgcc1:i386
-    - libstdc++5:i386
-    - libstdc++6:i386
-    - libsdl-dev
-    - scons
+addons:
+  apt:
+    update: true
+    package:
+      - gcc-multilib
+      - libc6:i386
+      - libgcc1:i386
+      - libstdc++5:i386
+      - libstdc++6:i386
+      - libsdl-dev
+      - scons
 arch: amd64
 notifications:
   email: false
@@ -123,6 +124,4 @@ env:
   - RTT_BSP='at32/at32f403a-start' RTT_TOOL_CHAIN='sourcery-arm'
   - RTT_BSP='at32/at32f407-start' RTT_TOOL_CHAIN='sourcery-arm'
 
-stages:
-  - name: compile
-    script: scons -C bsp/$RTT_BSP
+script: scons -C bsp/$RTT_BSP
