@@ -139,6 +139,7 @@ env:
   - RTT_BSP='at32/at32f403a-start' RTT_TOOL_CHAIN='sourcery-arm'
   - RTT_BSP='at32/at32f407-start' RTT_TOOL_CHAIN='sourcery-arm'
 
-stage: compile
-script:
-  - scons -C bsp/$RTT_BSP
+jobs:
+  include:
+    - stage: compile
+      script: scons -C bsp/$RTT_BSP
